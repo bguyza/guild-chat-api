@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  chat_id: 1
+  text: MyString
+  sent_at: 2020-05-19 22:51:27
+  user_id: 1
+
+two:
+  chat_id: 1
+  text: MyString
+  sent_at: 2020-05-19 22:51:27
+  user_id: 1
