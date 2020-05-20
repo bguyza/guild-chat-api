@@ -5,7 +5,7 @@ class MessagesController < ApplicationController
   def index
     @messages = Message.all
 
-    render json: @messages
+    # render json: @messages
   end
 
   # GET /messages/1
@@ -18,7 +18,12 @@ class MessagesController < ApplicationController
     @message = Message.new(message_params)
 
     if @message.save
-      render json: @message, status: :created, location: @message
+      ActionCable.server.broadcast 'messages',
+        message: message.text,
+        user: message.user.name
+      head :ok
+
+      # render json: @message, status: :created, location: @message
     else
       render json: @message.errors, status: :unprocessable_entity
     end
