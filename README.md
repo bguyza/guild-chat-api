@@ -111,9 +111,9 @@ URL: localhost:3000/messages/recent_for_user
 
 | Key | Value | Description |
 | --- | ------|-------------|
-| sender_id | 1 |  |
-| recipient_id | 3 |  |
-| last30 | true |  |
+| sender_id | 1 | The id of the sending user |
+| recipient_id | 3 | The id of the recieving user |
+| last30 | true | Should limit results to last 30 days? |
 
 
 
@@ -189,9 +189,9 @@ URL: localhost:3000/chats
 
 ***Headers:***
 
-| Key | Value | Description |
-| --- | ------|-------------|
-| Content-Type | application/json |  |
+| Key | Value |
+| --- | ------|
+| Content-Type | application/json |
 
 
 
