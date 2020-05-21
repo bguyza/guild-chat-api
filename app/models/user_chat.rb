@@ -3,5 +3,7 @@ class UserChat < ApplicationRecord
   has_many :users
   has_many :messages, through: :chat
 
-  validates :chat, presence: true
+  validates_associated :chat
+  validates_associated :users
+  validates :chat_id, uniqueness: { scope: :user_id }
 end

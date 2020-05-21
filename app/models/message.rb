@@ -9,7 +9,7 @@ class Message < ApplicationRecord
 
   def self.recent_messages(sender_id, recipient_id, last_30_days = false)
     if last_30_days
-      Message.where('user_id = ? AND created_at > ?', sender_id, 30.days.ago)
+      Message.where('messages.user_id = ? AND messages.created_at > ?', sender_id, 30.days.ago)
              .joins(:user_chats).where(user_chats: { user_id: recipient_id })
              .order('created_at DESC')
     else
@@ -32,8 +32,8 @@ class Message < ApplicationRecord
   private
 
   def user_is_part_of_chat
-    return if user_chats.pluck(:id).include?(user_id)
+    return if user_chats.pluck(:user_id).include?(user_id)
 
-    errors.add('User must belong to the chat')
+    errors.add(:user, 'User must belong to the chat')
   end
 end

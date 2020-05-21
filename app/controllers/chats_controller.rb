@@ -1,5 +1,4 @@
 class ChatsController < ApplicationController
-  before_action :set_chat, only: [:show, :update, :destroy]
 
   # GET /chats
   def index
@@ -10,7 +9,12 @@ class ChatsController < ApplicationController
 
   # GET /chats/1
   def show
-    render json: @chat
+    begin
+      @chat = Chat.find(params[:id])
+      render json: @chat
+    rescue ActiveRecord::RecordNotFound
+      render json: { error: 'Chat not found' }.to_json, status: :not_found
+    end
   end
 
   # POST /chats
@@ -26,6 +30,8 @@ class ChatsController < ApplicationController
 
   # PATCH/PUT /chats/1
   def update
+    @chat = Chat.find(params[:id])
+
     if @chat.update(chat_params)
       render json: @chat
     else
@@ -35,14 +41,12 @@ class ChatsController < ApplicationController
 
   # DELETE /chats/1
   def destroy
+    @chat = Chat.find(params[:id])
+
     @chat.destroy
   end
 
   private
-
-  def set_chat
-    @chat = Chat.find(params[:id])
-  end
 
   def chat_params
     params.require(:chat).permit(:name, user_ids: [])

@@ -8,7 +8,21 @@ u3 = User.create!(name: 'Demolition Man')
 User.create!(name: 'Highlight')
 User.create!(name: 'Grizzly')
 
-# # Create Existing Chats with Messages
-# c1 = Chat.new(name: "#{u1.name} <-> #{u2.name}")
-# uc1 = UserChat.create!(users: [u1, u2], chat: c1)
-# Message.create!(user: u1, chat: c1, text: 'What is up!?', sent_at: Time.now)
+# Create Chats Messages
+ChatCreator.call([u1.id, u2.id], 'Chat #1')
+ChatCreator.call([u1.id, u2.id, u3.id], 'Chat Group')
+
+# Do some chatting
+c1 = Chat.first
+Message.create!(user: u1, chat: c1, text: 'What is up!?')
+Message.create!(user: u2, chat: c1, text: 'Hey bud, it is a great day to be alive!')
+Message.create!(user: u1, chat: c1, text: 'Right? Lez kick it!')
+
+# Group chatting
+c2 = Chat.last
+Message.create!(user: u1, chat: c2, text: 'What is up super COOL group!?')
+Message.create!(user: u2, chat: c2, text: 'Guten Tag group, it is a great day to be alive!')
+Message.create!(user: u3, chat: c2, text: 'Right? Lez kick it as a group!')
+
+
+

@@ -1,17 +1,31 @@
 class MessagesController < ApplicationController
-  before_action :set_message, only: [:show, :update, :destroy]
 
   # GET /messages
   def index
     @messages = Message.all
-    binding.pry
 
-    # render json: @messages
+    render json: @messages
   end
 
   # GET /messages/1
   def show
+    @message = Message.find(params[:id])
     render json: @message
+  end
+
+  # GET /messages/recent_for_user
+  def recent_for_user
+    last30 = params[:last30] || false
+    if params[:sender_id] && params[:recipient_id]
+      @messages = Message.recent_messages(params[:sender_id], params[:recipient_id], last30)
+    end
+    render json: @messages
+  end
+
+  # GET /messages/recent_all
+  def recent_all
+    last30 = params[:last30] || false
+    render json: Message.all_recent_messages(last30)
   end
 
   # POST /messages
@@ -27,6 +41,7 @@ class MessagesController < ApplicationController
 
   # PATCH/PUT /messages/1
   def update
+    @message = Message.find(params[:id])
     if @message.update(message_params)
       render json: @message
     else
@@ -36,14 +51,11 @@ class MessagesController < ApplicationController
 
   # DELETE /messages/1
   def destroy
+    @message = Message.find(params[:id])
     @message.destroy
   end
 
   private
-
-  def set_message
-    @message = Message.find(params[:id])
-  end
 
   def message_params
     params.require(:message).permit(:chat_id, :text, :sent_at, :user_id)
