@@ -3,7 +3,12 @@ class UserChatsController < ApplicationController
 
   # GET /user_chats
   def index
-    @user_chats = UserChat.all
+    @user_chats =
+      if params[:user_id]
+        UserChat.where(user_id: params[:user_id])
+      else
+        UserChat.all
+      end
 
     render json: @user_chats
   end
@@ -15,7 +20,8 @@ class UserChatsController < ApplicationController
 
   # POST /user_chats
   def create
-    @user_chat = UserChat.new(user_chat_params)
+
+    @user_chat = UserChat.where(user_chat_params).first_or_initialize
 
     if @user_chat.save
       render json: @user_chat, status: :created, location: @user_chat
@@ -39,13 +45,13 @@ class UserChatsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_user_chat
-      @user_chat = UserChat.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def user_chat_params
-      params.require(:user_chat).permit(:chat_id, :name)
-    end
+  def set_user_chat
+    @user_chat = UserChat.find(params[:id])
+  end
+
+  def user_chat_params
+    params.require(:user_chat).permit(:chat_id, :user_id)
+  end
+
 end

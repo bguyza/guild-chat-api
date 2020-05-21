@@ -4,6 +4,7 @@ class MessagesController < ApplicationController
   # GET /messages
   def index
     @messages = Message.all
+    binding.pry
 
     # render json: @messages
   end
@@ -18,12 +19,7 @@ class MessagesController < ApplicationController
     @message = Message.new(message_params)
 
     if @message.save
-      ActionCable.server.broadcast 'messages',
-        message: message.text,
-        user: message.user.name
-      head :ok
-
-      # render json: @message, status: :created, location: @message
+      render json: @message, status: :created, location: @message
     else
       render json: @message.errors, status: :unprocessable_entity
     end
@@ -44,13 +40,12 @@ class MessagesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_message
-      @message = Message.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def message_params
-      params.require(:message).permit(:chat_id, :text, :sent_at, :user_id)
-    end
+  def set_message
+    @message = Message.find(params[:id])
+  end
+
+  def message_params
+    params.require(:message).permit(:chat_id, :text, :sent_at, :user_id)
+  end
 end

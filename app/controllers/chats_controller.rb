@@ -15,9 +15,9 @@ class ChatsController < ApplicationController
 
   # POST /chats
   def create
-    @chat = Chat.new(chat_params)
+    @chat = ChatCreator.call(params[:chat][:user_ids], params[:chat][:name])
 
-    if @chat.save
+    if @chat.valid?
       render json: @chat, status: :created, location: @chat
     else
       render json: @chat.errors, status: :unprocessable_entity
@@ -39,13 +39,12 @@ class ChatsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_chat
-      @chat = Chat.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def chat_params
-      params.require(:chat).permit(:user_chat_id, :name)
-    end
+  def set_chat
+    @chat = Chat.find(params[:id])
+  end
+
+  def chat_params
+    params.require(:chat).permit(:name, user_ids: [])
+  end
 end
