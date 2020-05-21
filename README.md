@@ -10,26 +10,35 @@ Your system will require pre-reqs to run a Rails project:
 This [guide](https://guides.rubyonrails.org/getting_started.html#creating-a-new-rails-project-installing-rails) provides good instructions on getting setup.
 
 * Ruby version
-I built my project using 2.6.3
+`2.6.3`
 
 * Rails version
-6.0.3
+`6.0.3`
 
 * Configuration
 Once Rails is installed, from the project root, run:
-```bundle install``` to install all necessary packages.
+```
+bundle install
+``` 
+to install all necessary packages.
 
 * Database creation
 To initialize the database, from the project root:
-```rails db:migrate```
+```
+rails db:migrate
+```
 
 * Database initialization
 To seed the database:
-```rails db:reset```
+```
+rails db:reset
+```
 
 * How to run the test suite
 From the project root:
-```rspec```
+```
+rspec
+```
 
 ## API Documentation
 
