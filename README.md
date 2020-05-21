@@ -243,7 +243,3 @@ The `ChatsChannel` class achieves this.
 
 With an API server running, opening [test.html](test.html) will make a connection and print to the page.
 If I had more time, I would have liked to continue exploring this. :) :)
-
-## Final thoughts
-
-
