@@ -37,7 +37,7 @@ rails db:reset
 * How to run the test suite
 From the project root:
 ```
-rspec
+bundle exec rspec spec
 ```
 
 ## API Documentation
