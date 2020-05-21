@@ -24,5 +24,9 @@ Message.create!(user: u1, chat: c2, text: 'What is up super COOL group!?')
 Message.create!(user: u2, chat: c2, text: 'Guten Tag group, it is a great day to be alive!')
 Message.create!(user: u3, chat: c2, text: 'Right? Lez kick it as a group!')
 
+# Create a really old message
+Message.create!(user: u1, chat: c2, text: "I'm REALLY OLD", created_at: 60.days.ago)
+
+
 
 
