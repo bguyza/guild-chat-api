@@ -1,3 +1,5 @@
+# Service class that creates a new chat and associates participant users to
+# to the chat via UserChats
 class ChatCreator
   def self.call(*args, &block)
     new(*args, &block).execute
