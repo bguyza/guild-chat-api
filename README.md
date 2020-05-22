@@ -10,26 +10,35 @@ Your system will require pre-reqs to run a Rails project:
 This [guide](https://guides.rubyonrails.org/getting_started.html#creating-a-new-rails-project-installing-rails) provides good instructions on getting setup.
 
 * Ruby version
-I built my project using 2.6.3
+`2.6.3`
 
 * Rails version
-6.0.3
+`6.0.3`
 
 * Configuration
 Once Rails is installed, from the project root, run:
-```bundle install``` to install all necessary packages.
+```
+bundle install
+``` 
+to install all necessary packages.
 
 * Database creation
 To initialize the database, from the project root:
-```rails db:migrate```
+```
+rails db:migrate
+```
 
 * Database initialization
 To seed the database:
-```rails db:reset```
+```
+rails db:reset
+```
 
 * How to run the test suite
 From the project root:
-```rspec```
+```
+bundle exec rspec spec
+```
 
 ## API Documentation
 
@@ -216,7 +225,7 @@ URL: localhost:3000/chats
 ## Design
 My general design consists of three primary domain models: Message, Chat, and User as reflected in the following Entity-Relationship Diagram.
 
-![ERD Image](/docs/erd.pdf)
+![ERD Image](docs/erd.pdf)
 
 * `Users` contains the different actors who interact with the chat app. It has one attribute, `name` used to desribe the user.
 * `Chats` maintains the relationship between one or more users for which messages can be transmitted. `UserChats` operates as a join table enabling a chat to have many users. Using Slack as an example, I envisioned use cases
@@ -243,7 +252,3 @@ The `ChatsChannel` class achieves this.
 
 With an API server running, opening [test.html](test.html) will make a connection and print to the page.
 If I had more time, I would have liked to continue exploring this. :) :)
-
-## Final thoughts
-
-
