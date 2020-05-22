@@ -53,7 +53,7 @@ bundle exec rspec spec
   * [GET recent messages for recipient/user](#4-get-recent-messages-for-recipientuser)
   * [GET single chat](#5-get-single-chat)
   * [GET users](#6-get-users)
-  * [Message post](#7-message-post)
+  * [POST message](#7-post-message)
   * [POST create chat](#8-post-create-chat)
 
 
@@ -154,7 +154,7 @@ URL: localhost:3000/users/
 
 
 
-### 7. Message post
+### 7. POST message
 
 
 
