@@ -7,7 +7,7 @@ Your system will require pre-reqs to run a Rails project:
 * Node.js
 * Yarn
 
-This [guide](https://guides.rubyonrails.org/getting_started.html#creating-a-new-rails-project-installing-rails) provides good instructions on getting setup.
+This [guide](https://guides.rubyonrails.org/getting_started.html#creating-a-new-rails-project-installing-rails) provides good standard instructions on getting setup with a Ruby on Rails application.
 
 * Ruby version
 
