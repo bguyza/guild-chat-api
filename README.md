@@ -44,11 +44,6 @@ bundle exec rspec spec
 
 ## API Documentation
 
-# Guild Project
-
-## Indices
-
-
   * [GET all recent messages](#1-get-all-recent-messages)
   * [GET chats](#2-get-chats)
   * [GET messages](#3-get-messages)
