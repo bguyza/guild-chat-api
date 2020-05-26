@@ -167,7 +167,7 @@ URL: localhost:3000/messages
 ***Headers:***
 
 | Key | Value |
-| --- | ------|-------------|
+| --- | ------|------------- |
 | Content-Type | application/json |
 
 
