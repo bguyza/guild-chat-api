@@ -196,7 +196,7 @@ URL: localhost:3000/chats
 ***Headers:***
 
 | Key | Value |
-| --- | ------|
+| --- | ------ |
 | Content-Type | application/json |
 
 
