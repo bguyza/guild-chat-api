@@ -10,9 +10,11 @@ Your system will require pre-reqs to run a Rails project:
 This [guide](https://guides.rubyonrails.org/getting_started.html#creating-a-new-rails-project-installing-rails) provides good instructions on getting setup.
 
 * Ruby version
+
 `2.6.3`
 
 * Rails version
+
 `6.0.3`
 
 * Configuration
@@ -225,7 +227,7 @@ URL: localhost:3000/chats
 ## Design
 My general design consists of three primary domain models: Message, Chat, and User as reflected in the following Entity-Relationship Diagram.
 
-![ERD Image](docs/erd.pdf)
+![image](https://drive.google.com/uc?export=view&id=15MxNACr6hWzjkK2n9NfRPYeuoCoIU-vU)
 
 * `Users` contains the different actors who interact with the chat app. It has one attribute, `name` used to desribe the user.
 * `Chats` maintains the relationship between one or more users for which messages can be transmitted. `UserChats` operates as a join table enabling a chat to have many users. Using Slack as an example, I envisioned use cases
