@@ -222,7 +222,7 @@ URL: localhost:3000/chats
 ## Design
 My general design consists of three primary domain models: Message, Chat, and User as reflected in the following Entity-Relationship Diagram.
 
-![image](https://drive.google.com/uc?export=view&id=15MxNACr6hWzjkK2n9NfRPYeuoCoIU-vU)
+![image](./docs/erd.png)
 
 * `Users` contains the different actors who interact with the chat app. It has one attribute, `name` used to desribe the user.
 * `Chats` maintains the relationship between one or more users for which messages can be transmitted. `UserChats` operates as a join table enabling a chat to have many users. Using Slack as an example, I envisioned use cases
