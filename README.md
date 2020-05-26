@@ -166,9 +166,9 @@ URL: localhost:3000/messages
 
 ***Headers:***
 
-| Key | Value | Description |
+| Key | Value |
 | --- | ------|-------------|
-| Content-Type | application/json |  |
+| Content-Type | application/json |
 
 
 
@@ -233,7 +233,7 @@ where a user can:
 * `Messages` contains the text/content and the user_id of the sender.
 
 I made this design decision so that I could model sending messages to a "channel" or "topic" rather than simply between users.
-It satisfies the base requirements while setting the stage enhance and scale in a flexible fashion. Lastly, it sets up infrastructure such that 
+It satisfies the base requirements while setting the to scale in a flexible fashion. Lastly, it sets up infrastructure such that 
 a pub-sub model could be used supporting Http 2.0 or scaling via SNS/SQS etc.
 
 ## Implementation
@@ -241,7 +241,7 @@ I decided to use Ruby on Rails to implement this project. Rails generators make 
 Additionally, I wanted to prove that I could create an API only Rails project that could be used as a microservice some magical day :)
 
 ## Extras
-I really wanted to achieve some idea of look-and-feel for what a real chat application would look like using websockets.
+I really wanted to achieve some idea of a look-and-feel for what a real chat application would look like using websockets.
 Rails provides a really neat feature for integrating websockets as explained [here](https://edgeguides.rubyonrails.org/action_cable_overview.html).  
 
 I was able to successfully expose an endpoint that can be used to connect to via a websocket enabling a front-end dev the ability to broadcasts chats messages in realtime.
