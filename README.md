@@ -36,6 +36,11 @@ To seed the database:
 rails db:reset
 ```
 
+* How to run the API
+```
+rails s
+```
+
 * How to run the test suite
 From the project root:
 ```
