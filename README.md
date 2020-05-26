@@ -244,8 +244,8 @@ Additionally, I wanted to prove that I could create an API only Rails project th
 I really wanted to achieve some idea of a look-and-feel for what a real chat application would look like using websockets.
 Rails provides a really neat feature for integrating websockets as explained [here](https://edgeguides.rubyonrails.org/action_cable_overview.html).  
 
-I was able to successfully expose an endpoint that can be used to connect to via a websocket enabling a front-end dev the ability to broadcasts chats messages in realtime.
-The `ChatsChannel` class achieves this.
+I was able to successfully expose an endpoint (`localhost:3000/cable`) that can be used to connect to via a websocket enabling a front-end dev the ability to broadcasts chats messages in realtime.
+The `ChatsChannel` class sets up a very basic "channel", or topic. Any time a messsge is sent to the channel, it is broadcast to subscribers.
 
 With an API server running, opening [test.html](test.html) will make a connection and print to the page.
 If I had more time, I would have liked to continue exploring this. :) :)
