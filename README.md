@@ -7,12 +7,14 @@ Your system will require pre-reqs to run a Rails project:
 * Node.js
 * Yarn
 
-This [guide](https://guides.rubyonrails.org/getting_started.html#creating-a-new-rails-project-installing-rails) provides good instructions on getting setup.
+This [guide](https://guides.rubyonrails.org/getting_started.html#creating-a-new-rails-project-installing-rails) provides good standard instructions on getting setup with a Ruby on Rails application.
 
 * Ruby version
+
 `2.6.3`
 
 * Rails version
+
 `6.0.3`
 
 * Configuration
@@ -42,18 +44,13 @@ bundle exec rspec spec
 
 ## API Documentation
 
-# Guild Project
-
-## Indices
-
-
   * [GET all recent messages](#1-get-all-recent-messages)
   * [GET chats](#2-get-chats)
   * [GET messages](#3-get-messages)
   * [GET recent messages for recipient/user](#4-get-recent-messages-for-recipientuser)
   * [GET single chat](#5-get-single-chat)
   * [GET users](#6-get-users)
-  * [Message post](#7-message-post)
+  * [POST message](#7-post-message)
   * [POST create chat](#8-post-create-chat)
 
 
@@ -154,7 +151,7 @@ URL: localhost:3000/users/
 
 
 
-### 7. Message post
+### 7. POST message
 
 
 
@@ -169,9 +166,9 @@ URL: localhost:3000/messages
 
 ***Headers:***
 
-| Key | Value | Description |
-| --- | ------|-------------|
-| Content-Type | application/json |  |
+| Key | Value |
+| --- | ------ |
+| Content-Type | application/json |
 
 
 
@@ -199,7 +196,7 @@ URL: localhost:3000/chats
 ***Headers:***
 
 | Key | Value |
-| --- | ------|
+| --- | ------ |
 | Content-Type | application/json |
 
 
@@ -225,7 +222,7 @@ URL: localhost:3000/chats
 ## Design
 My general design consists of three primary domain models: Message, Chat, and User as reflected in the following Entity-Relationship Diagram.
 
-![ERD Image](docs/erd.pdf)
+![image](https://drive.google.com/uc?export=view&id=15MxNACr6hWzjkK2n9NfRPYeuoCoIU-vU)
 
 * `Users` contains the different actors who interact with the chat app. It has one attribute, `name` used to desribe the user.
 * `Chats` maintains the relationship between one or more users for which messages can be transmitted. `UserChats` operates as a join table enabling a chat to have many users. Using Slack as an example, I envisioned use cases
@@ -236,7 +233,7 @@ where a user can:
 * `Messages` contains the text/content and the user_id of the sender.
 
 I made this design decision so that I could model sending messages to a "channel" or "topic" rather than simply between users.
-It satisfies the base requirements while setting the stage enhance and scale in a flexible fashion. Lastly, it sets up infrastructure such that 
+It satisfies the base requirements while setting the to scale in a flexible fashion. Lastly, it sets up infrastructure such that 
 a pub-sub model could be used supporting Http 2.0 or scaling via SNS/SQS etc.
 
 ## Implementation
@@ -244,7 +241,7 @@ I decided to use Ruby on Rails to implement this project. Rails generators make 
 Additionally, I wanted to prove that I could create an API only Rails project that could be used as a microservice some magical day :)
 
 ## Extras
-I really wanted to achieve some idea of look-and-feel for what a real chat application would look like using websockets.
+I really wanted to achieve some idea of a look-and-feel for what a real chat application would look like using websockets.
 Rails provides a really neat feature for integrating websockets as explained [here](https://edgeguides.rubyonrails.org/action_cable_overview.html).  
 
 I was able to successfully expose an endpoint that can be used to connect to via a websocket enabling a front-end dev the ability to broadcasts chats messages in realtime.
